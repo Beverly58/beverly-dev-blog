@@ -43,3 +43,4 @@ This is only needed if you want to test changes before publishing.
 1. Run the build script: `npm run build`
 
 The generated files will be in the `dist` folder. You can launch this using Live Server in VSCode.
+sjdncji
