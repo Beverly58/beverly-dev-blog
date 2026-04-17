@@ -1,89 +1,88 @@
 ---
-title: "Week 7 – Defining Functional Requirements"
+title: "Week 7 – Functional Requirements for Fan Qualification System"
 date: "2026-04-19"
-summary: "Identifying core features and defining what the system needs to do"
-tags: ["requirements", "design"]
+summary: "Defining system behaviour, constraints, and interaction logic for evaluating fan participation"
+tags: ["functional requirements", "interaction design", "fan system"]
 author: "Beverly"
----
-
-## Defining Functional Requirements
-
-In this stage of the project, I moved from exploring the idea to defining what the system actually needs to do.
-
-Rather than thinking broadly about "fan culture", I focused on identifying the core functionalities that would make a fan qualification system meaningful and usable.
-
 ---
 
 ## From Idea to System
 
-In my previous post, I discussed the limitations of current fan qualification systems, which often rely on visible metrics such as likes, comments, or purchase records.
+In Week 6, I explored the concept of a Fan Qualification System that evaluates fan identity based on meaningful engagement rather than superficial metrics.
 
-However, these metrics are not reliable indicators of genuine engagement.
-
-This led me to ask: **what should the system actually measure?**
+This week, I shift from concept to system thinking by defining the functional requirements of the application. The goal is to clearly identify what users can do, how the system responds, and how interactions are structured.
 
 ---
 
-## Core Functional Requirements
+## Core Feature
 
-After analysing the problem, I identified three essential functions for the system:
+The core feature of this system is to evaluate whether a user can be considered a "qualified fan" based on their participation behaviours.
 
-### 1. Multi-dimensional Engagement Tracking
-
-The system should track different types of user behaviour, not just one metric.
-
-This may include:
-- Participation frequency (e.g. posting, commenting)
-- Consistency over time
-- Contribution quality
-
-This allows the system to better reflect long-term engagement rather than short-term activity.
+Instead of relying on simple metrics such as likes or purchases, the system focuses on more meaningful actions, including contribution, consistency, and engagement diversity.
 
 ---
 
-### 2. Fan Identity Scoring System
+## User Actions
 
-The system should translate user behaviour into a visible score or level.
+Users can interact with the system through the following actions:
 
-This score is not just about quantity, but also about meaningful contribution.
+- Post content (+3 points)
+- Comment on discussions (+2 points)
+- Attend events (+5 points)
+- Like content (+1 point)
 
-For example:
-- Long-term participation could be weighted more heavily
-- Passive actions (likes) could have lower impact
-
-This creates a more balanced and fair evaluation.
-
----
-
-### 3. Transparency and Feedback
-
-Users should be able to understand how their score is calculated.
-
-The system should provide:
-- Clear indicators of what actions matter
-- Feedback on how users can improve their status
-
-This is important for building trust and reducing frustration.
+These actions simulate typical behaviours in online fan communities.
 
 ---
 
-## Design Considerations
+## System Constraints (Anti-abuse Design)
 
-While defining these requirements, I also considered several constraints:
+To prevent users from artificially inflating their scores, the system introduces constraints:
 
-- **Fairness vs Simplicity**: A more accurate system may become too complex for users to understand  
-- **Transparency vs Manipulation**: If rules are too visible, users may try to "game" the system  
-- **Engagement vs Pressure**: The system should encourage participation without creating excessive competition  
+- Each action has a daily limit (e.g., limited number of comments or likes)
+- Repetitive actions contribute less over time
+- The system encourages diverse participation rather than single-action repetition
 
-These trade-offs will influence how the system is designed in later stages.
+This ensures that the evaluation reflects authentic engagement rather than mechanical interaction.
 
 ---
 
-## Next Steps
+## System Responsibilities
 
-In the next stage, I will explore how these requirements can be translated into interaction design and system structure.
+The system is responsible for:
 
-This includes:
-- Designing user flows
-- Considering how data is stored and processed
-- Exploring interface ideas for visualising fan identity
+- Recording user actions
+- Calculating total engagement score
+- Applying constraints and limits
+- Evaluating fan level based on behaviour patterns
+- Displaying real-time qualification results
+
+---
+
+## Evaluation Logic
+
+The system evaluates users based on total score and behavioural diversity:
+
+- Score < 10 → New Fan
+- Score ≥ 10 → Active Fan
+- Score ≥ 20 → Core Fan (Qualified)
+
+In addition, users who perform a wider range of actions are considered more engaged than those repeating a single action.
+
+---
+
+## User Flow
+
+The interaction flow of the system is:
+
+User performs action → System records behaviour → Score updates → Constraints applied → Fan level recalculated → Result displayed
+
+---
+
+## Reflection
+
+This week helped me realise that designing a system is not only about defining features, but also about shaping behaviour.
+
+By introducing constraints and multi-dimensional evaluation, the system becomes more aligned with real-world fan culture, where authenticity and long-term engagement matter more than visible metrics.
+
+In the next stage, I will explore how these rules can be translated into interactive components and implemented within a web application.
