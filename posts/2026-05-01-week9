@@ -1,0 +1,59 @@
+---
+title: "Week 9 – Designing with Data: Architecting the Fandom Passport"
+date: "2026-05-01"
+author: "Beverly Liu"
+tags: ["data-design", "k-pop", "htmx", "ERD", "backend"]
+---
+
+## From Wireframes to Data Structures (LO1)
+
+Following the finalization of my **"Skeuomorphic Passport"** design—a physical book metaphor featuring an Identity Page and a Visas Section—this week focused on the transition from visual UI to backend data architecture.
+
+The primary goal was to create a **Data Definition Document (DDD)** that translates the "stamps" on the passport into a robust relational database. I realized that for the "Fandom Passport" to feel authentic, the data must be more than just a list of images; it needs to be a verifiable record of fan activity.
+
+---
+
+## Implementing the "Don't Repeat Yourself" (DRY) Principle (LO2)
+
+Applying the principles from the Week 9 lecture, I moved away from a "flat" data structure to a normalized relational model.
+
+### 1. Entity Relationship Mapping
+
+To support the interaction where a user earns a stamp by completing a task, I designed a **Many-to-Many** relationship.
+
+- **Users Table:** Stores the fan’s digital identity (ID, level, avatar)
+- **Stamps Table:** A master catalog of all available visa stamps (concerts, album releases, voting events)
+- **User_Stamps (Join Table):** Records which fan earned which stamp and the timestamp of issuance
+
+---
+
+### 2. Using SQL Joins for Dynamic UI
+
+To render the "Right Page" of the passport, the system will use **SQL Joins** instead of hard-coded content.
+
+- **Decision:** Use a `LEFT JOIN` between the `Stamps` table and the `User_Stamps` table  
+- **Reasoning:** This allows the UI to display a 3x4 grid with empty slots for unearned stamps while showing filled icons for earned ones
+
+This approach ensures that the interface reflects real-time user data rather than static design elements.
+
+---
+
+## Technical Evaluation: Scalability and Responsibility (LO3)
+
+A key consideration this week was data integrity and scalability.
+
+By using a relational database structure instead of storing all data within a single user object, the system becomes more flexible and easier to maintain.
+
+For example, when a new album or event is released, only a single new record needs to be added to the `Stamps` table. This automatically makes it available for all users without modifying existing data.
+
+This design also supports the use of **htmx** for dynamic updates, allowing the interface to render new stamps without reloading the entire page.
+
+---
+
+## Reflection
+
+This week helped me understand that backend structure is not separate from interaction design. Instead, it directly shapes how the interface behaves and scales over time.
+
+The combination of a skeuomorphic "passport" interface and a normalized relational backend creates a balance between emotional engagement and technical robustness.
+
+This approach ensures that the system is not only visually compelling but also sustainable and extensible for future development.
