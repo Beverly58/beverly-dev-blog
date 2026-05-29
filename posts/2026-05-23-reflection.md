@@ -1,7 +1,8 @@
 ---
 
 title: "A3 Reflection: Evaluating the Fandom Passport Prototype"
-date: 2026-06-09
+date: 2026-05-29
+author: Beverly
 tags: [reflection, evaluation, web-development, accessibility, ai-assisted-development]
 ---------------------------------------------------------------------------------------
 
