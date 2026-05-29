@@ -1,10 +1,9 @@
 ---
-
-title: "A3 Reflection: Evaluating the Fandom Passport Prototype"
+title: "Week 11 – Evaluation, Accessibility, and Responsible Design"
 date: 2026-05-29
 author: Beverly
-tags: [reflection, evaluation, web-development, accessibility, ai-assisted-development]
----------------------------------------------------------------------------------------
+tags: ["reflection", "evaluation", "web-development", "accessibility"]
+---
 
 # A3 Reflection: Evaluating the Fandom Passport Prototype
 
