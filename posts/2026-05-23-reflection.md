@@ -1,12 +1,15 @@
 ---
+
 title: "A3 Reflection: Evaluating the Fandom Passport Prototype"
 date: 2026-06-09
-tags: [reflection, evaluation, web-development, accessibility]
----
+tags: [reflection, evaluation, web-development, accessibility, ai-assisted-development]
+---------------------------------------------------------------------------------------
 
 # A3 Reflection: Evaluating the Fandom Passport Prototype
 
-For my final Bla+Bla prototype, I built a web application called **Fandom Passport**, a community feature designed for fan communities. Instead of recreating a normal social platform, I focused on a more distinctive fandom identity system. The prototype uses a passport metaphor to represent fan identity, participation, events, missions, and collectible stamps. Looking back at the project, I think the strongest part is that the concept became visually clear and functional as a web experience. At the same time, testing also showed some technical and usability limitations that I would improve in future development.
+For my final Bla+Bla prototype, I built **Fandom Passport**, a fandom community feature based on a passport-style identity system. The prototype allows users to select a fandom, view their fan identity, collect stamps, complete tasks, browse events, and engage with community content. My intention was to design a community feature that felt specific to fandom culture, rather than simply recreating standard social media functions such as posting, chatting, or uploading images.
+
+This project was also a major technical jump for me. My previous coding work had mainly involved HTML, CSS, and p5.js, so building a full-stack prototype was outside my usual coding experience. I used an AI-assisted “vibe coding” workflow to help generate, debug, and revise parts of the implementation. This helped me build a working prototype, but it also introduced an important limitation: I did not preserve the required Bla+Bla technical stack.
 
 ## Evidence Used for Evaluation
 
@@ -14,64 +17,58 @@ For my final Bla+Bla prototype, I built a web application called **Fandom Passpo
 
 ![Lighthouse audit result](/assets/lighthouse-homepage.png.png)
 
-The Lighthouse audit of the homepage showed a **Performance score of 84**, **Accessibility score of 96**, and **Best Practices score of 77**. This suggests that the prototype performs reasonably well overall, especially in accessibility, but still has room for technical improvement.
+The Lighthouse audit of the homepage showed a **Performance score of 84**, **Accessibility score of 96**, and **Best Practices score of 77**. This suggests that the prototype performs reasonably well in local testing, especially in accessibility, while still having room for technical improvement.
 
 ### Evidence 2: Mini WCAG Accessibility Check
 
-| Area Checked | Method | Finding | Improvement |
-|---|---|---|---|
-| Colour contrast | I visually checked the main text, buttons, muted labels, and pastel background colours. | Main buttons and headings are readable, but some small uppercase labels have lower contrast against the light background. | Increase contrast for secondary labels and metadata text. |
-| Keyboard navigation | I used the Tab key to move through the main navigation and quick action buttons. | The main navigation items and buttons are reachable, but the visible focus state could be stronger. | Add clearer focus outlines for all interactive elements. |
-| Text readability | I checked decorative fonts, small labels, letter spacing, and information hierarchy. | The passport aesthetic is distinctive, but some decorative or small text may be harder to read for some users. | Increase important label sizes and reduce excessive letter spacing where needed. |
-| Icon buttons and labels | I checked navigation buttons, quick actions, and icon-supported buttons. | Most actions include visible text labels, but some icon-based elements could be clearer for assistive technologies. | Add or improve aria-labels for icon-based buttons. |
-| Responsive layout | I resized the browser window and checked the homepage layout. | The interface works best on desktop; smaller screen widths can make the card layout feel crowded. | Improve mobile spacing and simplify stacked layouts on small screens. |
+| Area Checked        | Method                                                                       | Finding                                                                                       | Improvement                                                         |
+| ------------------- | ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| Colour contrast     | I visually checked main text, buttons, muted labels, and pastel backgrounds. | Main headings and buttons are readable, but some small uppercase labels have weaker contrast. | Increase contrast for secondary labels and metadata text.           |
+| Keyboard navigation | I used the Tab key to move through navigation and buttons.                   | Main items are reachable, but focus states could be more visible.                             | Add clearer focus outlines for interactive elements.                |
+| Text readability    | I checked decorative fonts, small labels, and spacing.                       | The passport aesthetic is distinctive, but some decorative text may be harder to read.        | Increase important label sizes and reduce excessive letter spacing. |
+| Icon labels         | I checked icon-supported buttons and navigation actions.                     | Most actions have visible labels, but some icon-based elements could be clearer.              | Improve aria-labels for icon-supported controls.                    |
+| Responsive layout   | I resized the browser window and checked the homepage layout.                | The design works best on desktop; smaller screens can feel crowded.                           | Improve mobile spacing and stacked layouts.                         |
 
 ### Evidence 3: Task Walkthrough
 
-| Task | Observation | UX Strength or Issue |
-|---|---|---|
-| Open the homepage | The user identity, fandom, rank, stamps, and points are visible immediately. | Strong first impression and clear concept. |
-| Navigate to Stamps | The Stamps page can be accessed from the main navigation and quick actions. | Navigation is clear and consistent. |
-| Open Tasks | The missions page communicates that users can complete actions. | Supports engagement and participation. |
-| Use Change my fandom | The button is visible on the homepage. | Useful function, but it could provide stronger confirmation feedback. |
-| View Events and Community | Events and posts are shown as part of the wider passport experience. | Helps the prototype feel like a community system rather than a single static page. |
+| Task                      | Observation                                                              | UX Strength or Issue                                      |
+| ------------------------- | ------------------------------------------------------------------------ | --------------------------------------------------------- |
+| Open the homepage         | Identity, fandom, rank, stamps, and points are visible immediately.      | Strong first impression and clear concept.                |
+| Navigate to Stamps        | The Stamps page is accessible through main navigation and quick actions. | Navigation is clear and consistent.                       |
+| Open Tasks                | The missions page communicates actions users can complete.               | Supports participation and engagement.                    |
+| Change fandom             | The button is visible on the homepage.                                   | Useful, but could provide stronger confirmation feedback. |
+| View Events and Community | Events and posts extend the passport experience.                         | Helps the prototype feel like a community system.         |
 
 ## Performance and Technical Behaviour
 
-To evaluate technical performance, I tested the prototype locally using the browser, Chrome DevTools, and Lighthouse. The final version runs with a React frontend, a FastAPI backend, and a local MongoDB database. During testing, I confirmed that the backend could run on `localhost:8001` and the frontend could open on `localhost:3000`. I also tested the frontend/backend connection by checking that the homepage loaded correctly instead of staying on the “Could not open passport” message.
+I tested the prototype locally using the browser, Chrome DevTools, and Lighthouse. The final version runs with a React frontend, a FastAPI backend, and a local MongoDB database. During testing, I confirmed that the backend could run on `localhost:8001` and the frontend could open on `localhost:3000`. I also checked that the homepage loaded successfully instead of staying on the “Could not open passport” error state.
 
-The Lighthouse result was useful because it gave measurable evidence instead of only relying on my own impression. The Performance score of 84 shows that the homepage performs reasonably well in a local environment. The interface loads smoothly once all required services are running, and navigation between pages such as Home, My Passport, Community, Events, Stamps, Tasks, and Profile feels responsive. Because the application uses React Router, moving between pages does not require a full page reload, which helps the prototype feel more polished.
+The Lighthouse result provided measurable evidence for the prototype’s performance. A Performance score of 84 suggests that the homepage loads reasonably well in a local environment. Once MongoDB, the backend, and the frontend are all running correctly, navigation between pages such as Home, My Passport, Stamps, Tasks, Community, Events, and Profile feels responsive. React Router also helps the prototype feel smoother because page changes do not require a full reload.
 
-However, the testing process also revealed technical weaknesses. The main issue was setup reliability. The application depends on MongoDB, the backend server, the frontend server, and correct `.env` files. When one of these parts was not running, the whole experience failed. For example, if MongoDB was not active, the backend produced connection errors. If the frontend environment variable did not point to the backend correctly, the page stayed on the retrying message. This showed that the prototype works, but its reliability depends heavily on local configuration.
+However, the main technical weakness is setup reliability. The prototype depends on several services running at the same time: MongoDB, the backend server, the frontend server, and correct `.env` configuration. When one part was missing or incorrectly configured, the application failed to load properly. For example, if MongoDB was not active, the backend could not connect to the database. If the frontend environment variable pointed to the wrong backend URL, the app stayed on the retrying message. This showed me that a working interface is not enough; the technical setup must also be stable and clearly documented.
 
-Another technical issue was dependency management. The frontend needed `npm install --legacy-peer-deps`, and the backend requirements needed adjustment because one package could not be installed. These issues did not change the visual design, but they affected how easily another person could run the prototype. Because of this, I added clearer README instructions for MongoDB, backend setup, frontend setup, and environment variables. If I continued the project, I would add an `.env.example` file and possibly use Docker to make the setup more stable.
+Another limitation was dependency management. The frontend required `npm install --legacy-peer-deps`, and the backend requirements file needed adjustment because one package could not be installed. These issues made the project harder to run for someone else, so I added README instructions explaining MongoDB, backend setup, frontend setup, and environment variables.
 
 ## User Experience and Accessibility
 
-The user experience is one of the stronger parts of the prototype. The passport metaphor is consistent across the visual style, navigation, identity page, stamps, tasks, and events. This helps the application feel different from a normal social media platform. It also fits the brief because the prototype focuses on a unique community feature rather than standard chat or upload functions.
+The strongest part of the prototype is the concept and user experience. The passport metaphor is consistent across the interface, including the home page, identity page, stamps, tasks, and events. This helps the feature feel specific to fandom culture. Instead of being a general community feed, the system presents fandom participation as something users can record, collect, and display.
 
-The homepage works well as an entry point. It immediately shows the user’s fandom identity, rank, stamp progress, points, upcoming events, and community posts. This gives users a quick understanding of who they are in the system and what they can do next. The main navigation is also clear because labels such as My Passport, Stamps, Tasks, Community, and Events match the user’s expected actions.
+The homepage works well as an entry point because it immediately shows the user’s fandom identity, rank, stamp progress, points, events, and community posts. This gives users a clear understanding of who they are in the system and what they can do next. The navigation labels are also understandable because pages such as My Passport, Stamps, Tasks, Community, and Events match the main user goals.
 
-The mini WCAG check showed that the prototype is generally readable and navigable, especially because most important buttons use visible text labels. The Lighthouse Accessibility score of 96 also suggests that the basic accessibility performance is strong. However, the check also revealed areas for improvement. Some small uppercase labels and muted metadata text have lower contrast against the pastel background. The decorative visual style supports the passport theme, but some text may be harder to read for users with low vision or on smaller screens. Keyboard navigation works for the main interface, but focus states could be more visually obvious.
+The accessibility evidence was mixed but useful. The Lighthouse Accessibility score of 96 suggests that the prototype has a relatively strong accessibility baseline. The mini WCAG check also showed that most main actions have visible text labels and that the core interface can be navigated. However, some smaller uppercase labels and muted metadata text could have better contrast. The decorative passport aesthetic is visually distinctive, but some text may be harder to read for users with low vision or on smaller screens. If I continued development, I would improve colour contrast, focus states, aria-labels, and mobile spacing.
 
-If I had more time, I would improve colour contrast, add clearer focus outlines, and check all icon-supported buttons for better aria-labels. I would also refine the mobile layout because the current interface works best on desktop, while smaller screens can make the card layout feel crowded.
+## Critical Reflection on AI-Assisted Development and Technical Compliance
 
-## Critical Reflection and Improvement Planning
+A major limitation of my final prototype is that I moved away from the required BlaBla template stack. The brief specified that the project should remain based on MojoJS, SQLite, and HTMX, while my final implementation used React, FastAPI, and MongoDB. I misunderstood the level of flexibility allowed when extending the template. I focused on building the Fandom Passport interaction, including the passport-style interface, user identity data, stamps, tasks, events, and community content, but I now understand that adding features should not have meant replacing the core stack.
 
-The biggest lesson I learned is that a strong concept still needs technical stability. At first, I focused mainly on the fandom passport idea: fan identity, stamps, missions, and participation. This gave the project a clear design direction. However, during implementation and testing, I realised that the technical structure is just as important. If the backend or environment variables fail, the user cannot experience the concept at all.
+AI tools were used as part of my development workflow. I used vibe coding and ChatGPT assistance to help generate code, interpret errors, debug local setup problems, resolve dependency issues, configure environment variables, and troubleshoot frontend/backend connection errors. This support helped me build a more advanced prototype than I could have produced using only my previous HTML, CSS, and p5.js experience. However, it also made it easier to move forward with an implementation without fully checking whether the architecture still matched the brief.
 
-One design decision that worked well was using the passport metaphor consistently. Visa labels, stamps, rank, and missions all support the idea that fandom participation can be collected and recorded. This made the application feel more unique than a standard community feed.
-
-One weaker implementation decision was relying on several manual setup steps. I had to run MongoDB, activate the backend environment, start the backend server, and run the frontend separately. In future, I would plan the technical setup earlier and document it while building, not only at the end. I would also make error states more user-friendly. Instead of only showing “Could not open passport,” the app could explain whether the backend connection failed or the user session was unavailable.
-
-I would also improve the reward system. The current stamp and task pages communicate the idea, but the interaction could be more dynamic. For example, completing a task could immediately unlock a stamp, update progress, and show a confirmation animation. This would make the relationship between user action and reward clearer.
+This has been the most important lesson from the project. Technical compliance is not separate from design quality. Even though the prototype communicates the intended fandom community experience, the mismatch with the required stack means it does not fully meet an important implementation requirement. If I continued or repaired this project, my first priority would be to rebuild the core passport, stamp, and task interactions within the original BlaBla stack, rather than only improving the visual interface.
 
 ## Retrospective Assessment of Functional Requirements
 
-Compared with my original plan, the final prototype meets the main functional requirements. My goal was to create a unique Bla+Bla community feature for fandom users, and the final application does this through the Fandom Passport system. It includes fandom selection, a passport-style homepage, identity/profile areas, stamps, tasks, events, community content, and an admin page.
+Conceptually, the prototype meets the goal of designing a unique community feature. It includes fandom selection, a passport-style homepage, identity/profile areas, collectible stamps, missions, events, community content, and an admin page. These features support the intended experience of fandom identity and participation.
 
-Some requirements were adjusted during development. Initially, I imagined a more complex fan qualification system with deeper unlocking logic. In the final prototype, I focused on making the main experience clear and functional rather than adding too many advanced features. This was a realistic decision because the assignment asked for a prototype of the standout feature, not a complete production system.
+However, I cannot evaluate the project as fully successful because the implementation does not preserve the required technical stack. The strongest parts of the project are the concept, visual identity, and user flow. The weakest part is compliance with the original BlaBla template requirements. This is a significant issue, not just a small technical detail.
 
-I also realised that some standard social platform features were less important. Chat and photo upload were not the focus of my concept. The more important functions were the passport identity, stamp collection, and mission system, because these made the community experience more distinctive.
-
-Overall, I think the prototype successfully demonstrates the core idea of a fandom community passport. It performs reasonably well in local testing, has a strong accessibility score, and provides a clear user experience. The main improvements I would make are simplifying setup, strengthening accessibility details, and making the reward interactions more dynamic.
+Overall, the project helped me understand both the potential and the risk of AI-assisted development. It allowed me to explore a more ambitious full-stack prototype, but it also showed that I need to check technical constraints earlier and more carefully. In future projects, I would confirm implementation requirements before building, document AI assistance more continuously, and make sure that the technical approach supports the brief rather than accidentally moving away from it.
